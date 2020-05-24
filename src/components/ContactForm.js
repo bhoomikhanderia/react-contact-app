@@ -8,10 +8,9 @@ class ContactForm extends Component {
   };
 
   handleInputChange = e => {
-    if (e.target.value.length > 0)
-      this.setState({
-        [e.target.name]: e.target.value
-      });
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   handleSubmit = e => {
