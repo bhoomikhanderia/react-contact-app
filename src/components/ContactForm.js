@@ -7,19 +7,11 @@ class ContactForm extends Component {
     age: ""
   };
 
-  //   constructor() {
-  //     super();
-  //     this.state = {
-  //       firstname: "",
-  //       lastname: "",
-  //       age: ""
-  //     };
-  //   }
-
   handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    if (e.target.value.length > 0)
+      this.setState({
+        [e.target.name]: e.target.value
+      });
   };
 
   handleSubmit = e => {
@@ -33,6 +25,10 @@ class ContactForm extends Component {
   };
 
   render() {
+    const isEnabled =
+      this.state.firstname.length > 0 &&
+      this.state.lastname.length > 0 &&
+      this.state.age.length > 0;
     return (
       <form onSubmit={this.handleSubmit} autoComplete="off">
         <label>First Name</label>
@@ -64,7 +60,9 @@ class ContactForm extends Component {
           onChange={this.handleInputChange}
         />
         <br />
-        <button type="submit">ADD PERSON</button>
+        <button type="submit" className="addbtn" disabled={!isEnabled}>
+          ADD PERSON
+        </button>
       </form>
     );
   }

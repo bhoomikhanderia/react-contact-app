@@ -28,39 +28,47 @@ class ContactsList extends Component {
 
   render() {
     return (
-      <div>
-        <h3>List of Contacts</h3>
-        <table>
-          <thead>
-            <tr>
-              <td>FIRST NAME</td>
-              <td>LAST NAME</td>
-              <td>AGE</td>
-              <td></td>
-            </tr>
-          </thead>
-
-          <tbody>
-            {this.state.list.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td>{item.firstname}</td>
-                  <td>{item.lastname}</td>
-                  <td>{item.age}</td>
-                  <td>
-                    <button onClick={() => this.handleDelete(index)}>
-                      REMOVE
-                    </button>
-                  </td>
+      <>
+        {this.state.list.length > 0 ? (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <td>FIRST NAME</td>
+                  <td>LAST NAME</td>
+                  <td>AGE</td>
+                  <td></td>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
 
-        <hr />
+              <tbody>
+                {this.state.list.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{item.firstname}</td>
+                      <td>{item.lastname}</td>
+                      <td>{item.age}</td>
+                      <td>
+                        <button
+                          onClick={() => this.handleDelete(index)}
+                          className="remove"
+                        >
+                          REMOVE
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <>
+            <p>No existing Contacts! Please enter contacts from table below:</p>
+          </>
+        )}
         <ContactForm onAddContact={this.onAddContact} />
-      </div>
+      </>
     );
   }
 }
