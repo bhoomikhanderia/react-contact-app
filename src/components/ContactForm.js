@@ -30,13 +30,16 @@ class ContactForm extends Component {
       this.state.age.length > 0;
     return (
       <form onSubmit={this.handleSubmit} autoComplete="off">
+        <h4>ADD A NEW PERSON</h4>
         <label>First Name</label>
         <br />
         <input
           type="text"
           name="firstname"
+          pattern="[A-Za-z]+"
           value={this.state.firstname}
           onChange={this.handleInputChange}
+          title="First name should only contain letters. e.g. Frank"
         />
         <br />
         <label>Last Name</label>
@@ -44,19 +47,21 @@ class ContactForm extends Component {
         <input
           type="text"
           name="lastname"
+          pattern="[A-Za-z]+"
           value={this.state.lastname}
           onChange={this.handleInputChange}
+          title="Last name should only contain letters. e.g. Johnson"
         />
         <br />
         <label>Age</label>
         <br />
         <input
-          type="number"
+          type="text"
           name="age"
-          min="1"
-          max="100"
+          pattern="\d*"
           value={this.state.age}
           onChange={this.handleInputChange}
+          title="Age should only contain numbers."
         />
         <br />
         <button type="submit" className="addbtn" disabled={!isEnabled}>

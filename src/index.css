@@ -73,3 +73,19 @@ input {
 .addbtn:disabled {
   background: #dddddd;
 }
+form h4 {
+  color: #333;
+  margin-top: 0px;
+}
+p {
+  text-align: center;
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  form {
+    width: 70%;
+    margin: 0px auto;
+  }
+  input {
+    border: 1px solid #ddd;
+  }
+}
